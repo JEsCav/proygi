@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="MyFirstApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplo de apply</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="controller.js"></script>
+	
+</head>
+<body ng-controller="FirstController">
+{{nombre}}
+<p><strong>valor del padre </strong>{{$parent.nombre}}</p><!--aqui puedo acceder al valor de la variable pero en el padre-->
+<div ng-controller="ChildController">
+	<!--este hereda de FirstController porque esta dentro de la declaracion o bloque de FirstController entonces hereda todos sus atributos-->
+	<p>valor del hijo<strong>{{nombre}}</strong></p>
+	<!--el scope se crea apartir del controlador padre en este caso firstcontroller pero si no hubiera un padre se crea a partir del rootscope-->
+	<!--pero si me voy al padre del padre osea a root puedo tomar su valor-->
+	{{$parent.$parent.nombre}}
+	<input type="text" ng-model="$parent.nombre">
+	<!--para sobreescribir el valor del padre desde el hijo usaria esto-->
+</div>
+</body>
+</html>
